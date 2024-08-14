@@ -2,9 +2,9 @@
 # @summary Puppet plan which scans entire code environments for legacy facts. Will automatically locate the Puppet primary and run against it. 
 #
 #
-# @param scan_environment Code environment to scan.
+# @param environment Code environment to scan.
 # @param check_ruby Whether to check ruby files for legacy facts.
-plan find_legacy_facts (
+plan find_legacy_facts::find_legacy_facts (
   String  $environment,
   Boolean $check_ruby = false,
 ) {
