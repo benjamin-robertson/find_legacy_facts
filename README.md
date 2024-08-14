@@ -26,17 +26,21 @@ Add legacy facts to your Puppetfile and deploy code to your Puppet primary.
 Legacy facts task and plan accepts two parameters. 
 
 **Environment:** Required: Name of the environment you wish to scan. This could be production, development etc. Note: the plan limits environment names to [valid environment names.][2]\
-**check_ruby:** Whether to scan ruby files for legacy facts. Note: local ruby functions/facts can still contain legacy fact as these are still collected on Puppet 8. They are no longer submitted to PuppetDB. 
+**check_ruby:** Whether to scan ruby files for legacy facts. **Note:** local ruby functions/facts can still contain legacy facts as these are still collected on Puppet 8, however they are no longer submitted to PuppetDB. 
 
 The plan `find_legacy_facts` will automatically locate your Puppet primary server. To manually target a Puppet server use the task `find_legacy_facts` and select the desired target. 
 
+These plans should also function when run by [Puppet Bolt.][5]
+
 ## Usage
 
-From within the Puppet Enterprise console, goto plans or tasks and select `find_legacy_facts`. Fill in required values and run the task/plan.
+From within the Puppet Enterprise console, goto plans or tasks and select `find_legacy_facts`. Fill in required values then run the task/plan.
+
+Depending on the size of your Puppet code environments, it may take a while to return the results.
 
 ## Limitations
 
-Find_legacy_facts can be used to help prepare to migration to Puppet 8. However it should not solely relied upon to catch all potential legacy facts. Running your code on a Puppet 8 server within your test environment is vital before performing production upgrades.
+Find_legacy_facts can be used to help prepare for the migration to Puppet 8. However it should not solely relied upon to catch all legacy fact issues. Running your code on a Puppet 8 server within your test environment is vital before performing production upgrades.
 
 ## Development
 
@@ -48,3 +52,4 @@ PR's glady accepted.
 [2]: https://www.puppet.com/docs/puppet/latest/lang_reserved.html#lang_acceptable_char-environment-names
 [3]: https://github.com/benjamin-robertson/find_legacy_facts/issues
 [4]: https://www.puppet.com/docs/puppet/8/upgrading-from-puppet7-to-puppet8#upgrading-from-puppet7-to-puppet8-legacy-facts-deprecation
+[5]: https://www.puppet.com/docs/bolt/latest/bolt.html
