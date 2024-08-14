@@ -8,6 +8,10 @@
 
 * [`init`](#init): Puppet task which scans entire code environments for legacy facts. Must be run against a Puppet Server with a full copy of the Puppet environ
 
+### Plans
+
+* [`find_legacy_facts::find_legacy_facts`](#find_legacy_facts--find_legacy_facts): Puppet plan which scans entire code environments for legacy facts. Will automatically locate the Puppet primary and run against it.
+
 ## Tasks
 
 ### <a name="init"></a>`init`
@@ -29,4 +33,31 @@ Code environment to scan.
 Data type: `Boolean`
 
 Whether to check ruby files for legacy facts.
+
+## Plans
+
+### <a name="find_legacy_facts--find_legacy_facts"></a>`find_legacy_facts::find_legacy_facts`
+
+lint:ignore:140chars lint:ignore:strict_indent
+
+#### Parameters
+
+The following parameters are available in the `find_legacy_facts::find_legacy_facts` plan:
+
+* [`environment`](#-find_legacy_facts--find_legacy_facts--environment)
+* [`check_ruby`](#-find_legacy_facts--find_legacy_facts--check_ruby)
+
+##### <a name="-find_legacy_facts--find_legacy_facts--environment"></a>`environment`
+
+Data type: `Pattern[/^[A-z_].*/]`
+
+Code environment to scan.
+
+##### <a name="-find_legacy_facts--find_legacy_facts--check_ruby"></a>`check_ruby`
+
+Data type: `Boolean`
+
+Whether to check ruby files for legacy facts.
+
+Default value: `false`
 
