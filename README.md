@@ -25,7 +25,8 @@ Add legacy facts to your Puppetfile and deploy code to your Puppet primary.
 
 Legacy facts task and plan accepts two parameters. 
 
-**Environment:** Required: Name of the environment you wish to scan. This could be production, development etc. Note: the plan limits environment names to [valid environment names.][2]\
+**Environment:** Required: Name of the environment you wish to scan. This could be production, development etc. Note: the plan limits environment names to [valid environment names.][2]
+
 **check_ruby:** Whether to scan ruby files for legacy facts. **Note:** local ruby functions/facts can still contain legacy facts as these are still collected on Puppet 8, however they are no longer submitted to PuppetDB. 
 
 The plan `find_legacy_facts` will automatically locate your Puppet primary server. To manually target a Puppet server use the task `find_legacy_facts` and select the desired target. 
