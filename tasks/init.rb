@@ -83,6 +83,8 @@ def check_file(file)
           print_message(file, easy, count)
         elsif line.match?(%r{confine #{easy}\:})
           print_message(file, easy, count)
+        elsif line.match?(%r{defaultfor #{easy}\:})
+          print_message(file, easy, count)
         end
       elsif file.match?(%r{\.yaml$})
         if line.match?(%r{\%\{\:\:#{easy}\}})
