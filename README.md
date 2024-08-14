@@ -34,7 +34,6 @@ The plan `find_legacy_facts` will automatically locate your Puppet primary serve
 
 From within the Puppet Enterprise console, goto plans or tasks and select `find_legacy_facts`. Fill in required values and run the task/plan.
 
-
 ## Limitations
 
 Find_legacy_facts can be used to help prepare to migration to Puppet 8. However it should not solely relied upon to catch all potential legacy facts. Running your code on a Puppet 8 server within your test environment is vital before performing production upgrades.
