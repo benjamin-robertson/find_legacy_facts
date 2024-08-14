@@ -1,8 +1,8 @@
 {
   "name": "benjaminrobertson-find_legacy_facts",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "benjaminrobertson",
-  "summary": "Detected legacy facts in use within a Puppet Environment",
+  "summary": "Detect legacy facts in use within a Puppet Environment",
   "license": "Apache-2.0",
   "source": "https://github.com/benjamin-robertson/find_legacy_facts",
   "project_page": "https://github.com/benjamin-robertson/find_legacy_facts",
