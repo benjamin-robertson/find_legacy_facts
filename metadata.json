@@ -2,9 +2,10 @@
   "name": "benjaminrobertson-find_legacy_facts",
   "version": "0.1.0",
   "author": "benjaminrobertson",
-  "summary": "",
+  "summary": "Detected legacy facts in use within a Puppet Environment",
   "license": "Apache-2.0",
-  "source": "",
+  "source": "https://github.com/benjamin-robertson/find_legacy_facts",
+  "issues_url": "https://github.com/benjamin-robertson/find_legacy_facts/issues",
   "dependencies": [
 
   ],
@@ -16,21 +17,11 @@
       ]
     },
     {
-      "operatingsystem": "OracleLinux",
-      "operatingsystemrelease": [
-        "7"
-      ]
-    },
-    {
       "operatingsystem": "RedHat",
       "operatingsystemrelease": [
-        "8"
-      ]
-    },
-    {
-      "operatingsystem": "Scientific",
-      "operatingsystemrelease": [
-        "7"
+        "7",
+        "8",
+        "9"
       ]
     },
     {
@@ -42,7 +33,10 @@
     {
       "operatingsystem": "Ubuntu",
       "operatingsystemrelease": [
-        "18.04"
+        "18.04",
+        "20.04",
+        "22.04",
+        "24.04"
       ]
     }
   ],
