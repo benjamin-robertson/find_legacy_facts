@@ -25,7 +25,7 @@ plan find_legacy_facts::find_legacy_facts (
   $pe_target_certname = $pe_target.map | Hash $node | { $node['certname'] }
   out::message("pe_target_certname is ${pe_target_certname}")
 
-  $task_results = run_task('find_legacy_facts::find_legacy_facts', $pe_target_certname, { 'environment' => $environment, 'check_ruby' => $check_ruby, '_catch_errors' => true })
+  $task_results = run_task('find_legacy_facts::init', $pe_target_certname, { 'environment' => $environment, 'check_ruby' => $check_ruby, '_catch_errors' => true })
 
   $results = $task_results[0].message
   return($results)
