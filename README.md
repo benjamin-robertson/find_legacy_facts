@@ -36,7 +36,7 @@ These plans should also function when run by [Puppet Bolt.][5]
 
 From within the Puppet Enterprise console, goto plans or tasks and select `find_legacy_facts`. Fill in required values then run the task/plan.
 
-Depending on the size of your Puppet code environments, it may take a while to return the results.
+Depending on the size of your Puppet code environment, it may take a while to return the results.
 
 ## Limitations
 
