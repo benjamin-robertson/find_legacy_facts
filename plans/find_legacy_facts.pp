@@ -5,7 +5,7 @@
 # @param environment Code environment to scan.
 # @param check_ruby Whether to check ruby files for legacy facts.
 plan find_legacy_facts::find_legacy_facts (
-  Pattern[/^[A-z_].*/]  $environment,
+  Pattern[/^[a-z0-9_]+/]  $environment,
   Boolean               $check_ruby   = false,
 ) {
   # We need to get the primary server. Check pe_status_check fact. otherwise fall back to built in fact.

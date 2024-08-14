@@ -25,7 +25,7 @@ Add legacy facts to your Puppetfile and deploy code to your Puppet primary.
 
 Legacy facts task and plan accepts two parameters. 
 
-**Environment:** Required: Name of the environment you wish to scan. This could be production, development etc.
+**Environment:** Required: Name of the environment you wish to scan. This could be production, development etc. Note: the plan limits environment names to 
 **check_ruby:** Whether to scan ruby files foe legacy facts. Note: local ruby functions/facts can still contain legacy fact as these are still collected on Puppet 8. They are just not submitted to PuppetDB. 
 
 ## Usage

@@ -49,7 +49,7 @@ The following parameters are available in the `find_legacy_facts::find_legacy_fa
 
 ##### <a name="-find_legacy_facts--find_legacy_facts--environment"></a>`environment`
 
-Data type: `Pattern[/^[A-z_].*/]`
+Data type: `Pattern[/^[a-z0-9_]+/]`
 
 Code environment to scan.
 
