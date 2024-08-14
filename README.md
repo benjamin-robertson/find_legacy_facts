@@ -13,7 +13,7 @@ A module containing a task and plan to scan entire code environments for legacy 
 
 ## Description
 
-Puppet 8 by default no longer saves legacy facts to PuppetDB. This will case any Puppet manifest code to [fail if legacy facts][4] are still in use after upgrading to Puppet 8.
+Puppet 8 by default no longer saves legacy facts to PuppetDB. This will case any Puppet manifest code to [fail compilation if legacy facts][4] are still in use after upgrading to Puppet 8.
 
 For more information on legacy facts and what they are. See [Legacy Facts][1]
 
@@ -25,7 +25,7 @@ Add legacy facts to your Puppetfile and deploy code to your Puppet primary.
 
 Legacy facts task and plan accepts two parameters. 
 
-**Environment:** Required: Name of the environment you wish to scan. This could be production, development etc. Note: the plan limits environment names to [valid environment names.][2]
+**Environment:** Required: Name of the environment you wish to scan. This could be production, development etc. Note: the plan limits environment names to [valid environment names.][2]\
 **check_ruby:** Whether to scan ruby files for legacy facts. Note: local ruby functions/facts can still contain legacy fact as these are still collected on Puppet 8. They are no longer submitted to PuppetDB. 
 
 The plan `find_legacy_facts` will automatically locate your Puppet primary server. To manually target a Puppet server use the task `find_legacy_facts` and select the desired target. 
