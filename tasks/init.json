@@ -1,14 +1,14 @@
 {
   "puppet_task_version": 1,
   "supports_noop": false,
-  "description": "Puppet task which scans entire code environments for legacy facts.",
+  "description": "Puppet task which scans entire code environments for legacy facts. Must be run against a Puppet Server with a full copy of the Puppet environment you wish to scan. EG Primary, replica or compiler.",
   "parameters": {
     "environment":{
       "description": "Code environment to scan.",
       "type": "String[1]"
     },
     "check_ruby":{
-      "description": "Whether to check ruby files for legacy facts",
+      "description": "Whether to check ruby files for legacy facts.",
       "type": "Boolean",
       "default": false
     }
