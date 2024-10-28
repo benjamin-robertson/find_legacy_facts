@@ -1,6 +1,6 @@
 {
   "name": "benjaminrobertson-find_legacy_facts",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "author": "benjaminrobertson",
   "summary": "Detect legacy facts in use within a Puppet Environment",
   "license": "Apache-2.0",
@@ -47,7 +47,7 @@
       "version_requirement": ">= 7.24 < 9.0.0"
     }
   ],
-  "pdk-version": "3.2.0",
-  "template-url": "pdk-default#3.2.0",
-  "template-ref": "tags/3.2.0-0-gb257ef1"
+  "pdk-version": "3.3.0",
+  "template-url": "pdk-default#3.3.0",
+  "template-ref": "tags/3.3.0-0-g5d17ec1"
 }

@@ -11,6 +11,10 @@
       "description": "Whether to check ruby files for legacy facts.",
       "type": "Boolean",
       "default": false
+    },
+    "environment_path":{
+      "description": "Path to Puppet environment, EG where Puppet code is deployed on primary.",
+      "type": "Optional[String]"
     }
   }
 }
