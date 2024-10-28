@@ -124,7 +124,7 @@ end
 
 files = []
 puts "path is #{environment_path}/#{environment}/*"
-get_pp_files(files, "#{environment_path}/#{environment}/*", pattern)
+get_pp_files(files, "#{environment_path}/environments/#{environment}/*", pattern)
 
 files.each do |file|
   check_file(file)
