@@ -42,15 +42,18 @@ environment_path = params['environment_path']
 pattern = [%r{\.pp$}, %r{\.epp$}, %r{\.erb$}, %r{\.yaml$}]
 
 # Get environment dir
+puts "environment_path is #{environment_path}"
 if environment_path.nil?
   # load configuration
   config = Hocon.load('/etc/puppetlabs/puppetserver/conf.d/file-sync.conf')
+  puts "config is #{config}"
   # value = config.dig('file-sync', 'repos', 'puppet-code', 'live-dir')
   if config.dig('file-sync', 'repos', 'puppet-code', 'live-dir').nil?
     puts 'Unable to get puppet environment path, please specify path and ensure you are running task on the correct server.'
     exit(1)
   else
     environment_path = config.dig('file-sync', 'repos', 'puppet-code', 'live-dir')
+    puts "config is #{environment_path}"
   end
 end
 
