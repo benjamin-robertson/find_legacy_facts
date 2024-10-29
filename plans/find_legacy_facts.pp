@@ -23,14 +23,19 @@ plan find_legacy_facts::find_legacy_facts (
     $pe_target = $pe_status_results
   }
 
-  # Update facts
-  $pe_target_certname = $pe_target.map | Hash $node | { $node['certname'] }
-  without_default_logging() || { run_plan(facts, targets => $pe_target_certname) }
-  out::message("pe_target_certname is ${pe_target_certname}")
+  $full_list = get_targets($pe_target)
 
-  $task_results = run_task('find_legacy_facts::init', $pe_target_certname, { 'environment' => $environment, 'check_ruby' => $check_ruby, 'environment_path' => $pe_target_certname.facts['puppet_environmentpath'], '_catch_errors' => true })
+  unless $full_list.empty {
+    # Update facts
+    without_default_logging() || { run_plan(facts, targets => $full_list) }
 
-  $results = $task_results[0].message
-  return($results)
+    $pe_target_certname = $pe_target.map | Hash $node | { $node['certname'] }
+    out::message("pe_target_certname is ${pe_target_certname}")
+
+    $task_results = run_task('find_legacy_facts::init', $full_list, { 'environment' => $environment, 'check_ruby' => $check_ruby, 'environment_path' => $full_list.facts['puppet_environmentpath'], '_catch_errors' => true })
+
+    $results = $task_results[0].message
+    return($results)
+  }
 }
 #lint:endignore
