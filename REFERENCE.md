@@ -34,6 +34,12 @@ Data type: `Boolean`
 
 Whether to check ruby files for legacy facts.
 
+##### `environment_path`
+
+Data type: `Optional[String]`
+
+Path to Puppet environment, EG where Puppet code is deployed on primary.
+
 ## Plans
 
 ### <a name="find_legacy_facts--find_legacy_facts"></a>`find_legacy_facts::find_legacy_facts`

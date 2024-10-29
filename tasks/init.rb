@@ -123,7 +123,7 @@ def check_file(file)
 end
 
 files = []
-puts "Environment path is #{environment_path}#{environment}/*"
+puts "Environment path is #{environment_path}/#{environment}/*"
 get_pp_files(files, "#{environment_path}/#{environment}/*", pattern)
 
 files.each do |file|
