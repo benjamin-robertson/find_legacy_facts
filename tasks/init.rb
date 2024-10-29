@@ -52,7 +52,7 @@ if environment_path.nil?
     puts 'Unable to get puppet environment path, please specify path and ensure you are running task on the correct server.'
     exit(1)
   else
-    environment_path = "#{config.dig('file-sync', 'repos', 'puppet-code', 'live-dir')}/environments/"
+    environment_path = "#{config.dig('file-sync', 'repos', 'puppet-code', 'live-dir')}/environments"
     puts "Path is #{environment_path}"
   end
 end
@@ -124,7 +124,7 @@ end
 
 files = []
 puts "Environment path is #{environment_path}#{environment}/*"
-get_pp_files(files, "#{environment_path}#{environment}/*", pattern)
+get_pp_files(files, "#{environment_path}/#{environment}/*", pattern)
 
 files.each do |file|
   check_file(file)
