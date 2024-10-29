@@ -24,7 +24,7 @@ plan find_legacy_facts::find_legacy_facts (
   }
 
   # Update facts
-  without_default_logging() || { run_plan(facts, targets => $pe_target) }
+  without_default_logging() || { run_plan('facts', targets => $pe_target) }
   $pe_target_certname = $pe_target.map | Hash $node | { $node['certname'] }
   out::message("pe_target_certname is ${pe_target_certname}")
 
