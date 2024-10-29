@@ -22,10 +22,13 @@ plan find_legacy_facts::find_legacy_facts (
     # We found a single primary server :)
     $pe_target = $pe_status_results
   }
+
+  # Update facts
+  without_default_logging() || { run_plan(facts, targets => $pe_target) }
   $pe_target_certname = $pe_target.map | Hash $node | { $node['certname'] }
   out::message("pe_target_certname is ${pe_target_certname}")
 
-  $task_results = run_task('find_legacy_facts::init', $pe_target_certname, { 'environment' => $environment, 'check_ruby' => $check_ruby, 'environment_path' => $facts['puppet_environmentpath'], '_catch_errors' => true })
+  $task_results = run_task('find_legacy_facts::init', $pe_target_certname, { 'environment' => $environment, 'check_ruby' => $check_ruby, 'environment_path' => $pe_target.facts['puppet_environmentpath'], '_catch_errors' => true })
 
   $results = $task_results[0].message
   return($results)
