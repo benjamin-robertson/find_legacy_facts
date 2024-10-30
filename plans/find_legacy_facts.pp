@@ -3,7 +3,7 @@
 #
 #
 # @param environment Code environment to scan.
-# @param check_ruby Whether to check ruby files for legacy facts.
+# @param check_ruby Whether to check ruby files for legacy facts. **Note:** local ruby functions/facts can still contain legacy facts as these are still collected on Puppet 8, however they are no longer submitted to PuppetDB. 
 plan find_legacy_facts::find_legacy_facts (
   Pattern[/^[a-z0-9_]+/]  $environment,
   Boolean                 $check_ruby = false,

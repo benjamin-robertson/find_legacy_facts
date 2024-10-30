@@ -63,7 +63,7 @@ Code environment to scan.
 
 Data type: `Boolean`
 
-Whether to check ruby files for legacy facts.
+Whether to check ruby files for legacy facts. **Note:** local ruby functions/facts can still contain legacy facts as these are still collected on Puppet 8, however they are no longer submitted to PuppetDB.
 
 Default value: `false`
 
