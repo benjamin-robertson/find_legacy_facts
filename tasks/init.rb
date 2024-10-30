@@ -1,6 +1,7 @@
 #!/opt/puppetlabs/puppet/bin/ruby
 
 require 'json'
+require 'hocon'
 
 # facts defs
 
@@ -37,7 +38,20 @@ LEGACY_FACTS = ['memoryfree_mb', 'memorysize_mb', 'swapfree_mb',
 params = JSON.parse(STDIN.read)
 check_ruby = params['check_ruby']
 environment = params['environment']
+environment_path = params['environment_path']
 pattern = [%r{\.pp$}, %r{\.epp$}, %r{\.erb$}, %r{\.yaml$}]
+
+# Get environment dir
+if environment_path.nil?
+  # load configuration
+  config = Hocon.load('/etc/puppetlabs/puppetserver/conf.d/file-sync.conf')
+  if config.dig('file-sync', 'repos', 'puppet-code', 'live-dir').nil?
+    puts 'Unable to get puppet environment path, please specify path and ensure you are running task on the correct server.'
+    exit(1)
+  else
+    environment_path = "#{config.dig('file-sync', 'repos', 'puppet-code', 'live-dir')}/environments"
+  end
+end
 
 if check_ruby
   pattern.push(%r{\.rb})
@@ -105,7 +119,7 @@ def check_file(file)
 end
 
 files = []
-get_pp_files(files, "/etc/puppetlabs/code/environments/#{environment}/*", pattern)
+get_pp_files(files, "#{environment_path}/#{environment}/*", pattern)
 
 files.each do |file|
   check_file(file)

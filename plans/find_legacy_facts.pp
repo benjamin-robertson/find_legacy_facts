@@ -3,10 +3,10 @@
 #
 #
 # @param environment Code environment to scan.
-# @param check_ruby Whether to check ruby files for legacy facts.
+# @param check_ruby Whether to check ruby files for legacy facts. **Note:** local ruby functions/facts can still contain legacy facts as these are still collected on Puppet 8, however they are no longer submitted to PuppetDB. 
 plan find_legacy_facts::find_legacy_facts (
   Pattern[/^[a-z0-9_]+/]  $environment,
-  Boolean               $check_ruby   = false,
+  Boolean                 $check_ruby = false,
 ) {
   # We need to get the primary server. Check pe_status_check fact. otherwise fall back to built in fact.
   $pe_status_results = puppetdb_query('inventory[certname] { facts.pe_status_check_role = "primary" }')
@@ -22,10 +22,15 @@ plan find_legacy_facts::find_legacy_facts (
     # We found a single primary server :)
     $pe_target = $pe_status_results
   }
+
   $pe_target_certname = $pe_target.map | Hash $node | { $node['certname'] }
   out::message("pe_target_certname is ${pe_target_certname}")
 
-  $task_results = run_task('find_legacy_facts::init', $pe_target_certname, { 'environment' => $environment, 'check_ruby' => $check_ruby, '_catch_errors' => true })
+  # Update facts
+  $pe_target_final = get_target($pe_target_certname)
+  without_default_logging() || { run_plan(facts, targets => $pe_target_final) }
+
+  $task_results = run_task('find_legacy_facts::init', $pe_target_final, { 'environment' => $environment, 'check_ruby' => $check_ruby, 'environment_path' => $pe_target_final.facts['puppet_environmentpath'], '_catch_errors' => true })
 
   $results = $task_results[0].message
   return($results)
