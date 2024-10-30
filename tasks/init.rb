@@ -46,14 +46,11 @@ puts "environment_path is #{environment_path}"
 if environment_path.nil?
   # load configuration
   config = Hocon.load('/etc/puppetlabs/puppetserver/conf.d/file-sync.conf')
-  puts "config is #{config}"
-  # value = config.dig('file-sync', 'repos', 'puppet-code', 'live-dir')
   if config.dig('file-sync', 'repos', 'puppet-code', 'live-dir').nil?
     puts 'Unable to get puppet environment path, please specify path and ensure you are running task on the correct server.'
     exit(1)
   else
     environment_path = "#{config.dig('file-sync', 'repos', 'puppet-code', 'live-dir')}/environments"
-    puts "Path is #{environment_path}"
   end
 end
 
@@ -123,7 +120,6 @@ def check_file(file)
 end
 
 files = []
-puts "Environment path is #{environment_path}/#{environment}/*"
 get_pp_files(files, "#{environment_path}/#{environment}/*", pattern)
 
 files.each do |file|

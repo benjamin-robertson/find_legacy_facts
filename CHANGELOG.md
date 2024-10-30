@@ -7,8 +7,8 @@ All notable changes to this project will be documented in this file.
 **Features**
 
 - Updated plan and task to work with lockless code deploys. find_legacy_facts dynamically locates environment directory using facts and configuration files. [#2](https://github.com/benjamin-robertson/find_legacy_facts/issues/2)
-- Added github actions lint testing
-- Bumped PDK version
+- Added github actions lint testing.
+- Bumped PDK version.
 
 ## Release 0.2.0
 
